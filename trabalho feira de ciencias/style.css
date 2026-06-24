@@ -1,0 +1,1569 @@
+/* Correção de visibilidade */
+
+html,
+body {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    overflow-x: hidden;
+}
+
+body * {
+    visibility: visible;
+}
+
+section,
+div,
+main,
+article,
+header,
+footer,
+nav {
+    opacity: 1;
+}
+/* Corrige elementos escondidos por animações */
+[data-aos],
+.hidden,
+.fade-in,
+.reveal,
+.animate {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+}
+
+/* Corrige possíveis problemas de tema */
+body.light,
+body.dark {
+    background: #fff;
+    color: #222;
+}
+
+/* Garante que textos sejam visíveis */
+h1, h2, h3, h4, h5, h6,
+p, span, a, li {
+    color: inherit;
+}
+
+/* Corrige elementos ocultos */
+[hidden] {
+    display: block !important;
+}
+
+/* Evita que containers desapareçam */
+.container,
+.content,
+.wrapper,
+.hero,
+.section {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+html{
+    scroll-behavior:smooth;
+    -webkit-text-size-adjust:100%;
+}
+
+body{
+    min-height:100vh;
+    text-rendering:optimizeLegibility;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+}
+
+/* ==========================
+Alterações feitas por mim
+========================== */
+
+.container,
+.grid-6,
+.material {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.material-card {
+    max-width: 300px;
+    width: 100%;
+}
+
+.card {
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.02) !important;
+    box-shadow:
+        0 10px 20px rgba(0, 0, 0, 0.1), !important
+        0 20px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+
+
+
+/* ==========================
+   RESET
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+:root{
+
+    --primary:#00d4ff;
+    --secondary:#3cff8f;
+    --accent:#ffd43b;
+
+    --bg:#07111f;
+    --bg2:#0d1b2a;
+
+    --card:#10253d;
+
+    --text:#ffffff;
+    --text-light:#dce7f5;
+
+    --shadow:0 10px 30px rgba(0,0,0,.25);
+
+    --border:rgba(255,255,255,.08);
+}
+
+body.light{
+
+    --bg:#f5f8ff;
+    --bg2:#ffffff;
+
+    --card:#ffffff;
+
+    --text:#081120;
+    --text-light:#42536a;
+
+    --border:#e7edf6;
+}
+
+body{
+    font-family: "Segoe UI", sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+}
+
+/* ==========================
+   SCROLLBAR
+========================== */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:var(--bg);
+}
+
+::-webkit-scrollbar-thumb{
+    background:linear-gradient(
+        var(--primary),
+        var(--secondary)
+    );
+    border-radius:20px;
+}
+
+/* ==========================
+   CONTAINER
+========================== */
+
+.container{
+    width:min(1200px,90%);
+    margin:auto;
+}
+
+/* ==========================
+   HEADER
+========================== */
+
+.header{
+
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+
+    z-index:999;
+
+    backdrop-filter:blur(16px);
+
+    background:rgba(7,17,31,.75);
+
+    border-bottom:1px solid var(--border);
+}
+
+body.light .header{
+    background:rgba(255,255,255,.9);
+}
+
+.navbar{
+
+    height:80px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+
+    display:flex;
+    gap:12px;
+    align-items:center;
+}
+
+.logo-icon{
+
+    font-size:2rem;
+
+    color:var(--accent);
+
+    animation:pulse 2s infinite;
+}
+
+.logo h2{
+
+    color:var(--secondary);
+
+    font-size:1.3rem;
+}
+
+.logo span{
+
+    font-size:.8rem;
+    color:var(--text-light);
+}
+
+.nav-links{
+
+    display:flex;
+    list-style:none;
+    gap:25px;
+}
+
+.nav-links a{
+
+    text-decoration:none;
+    color:var(--text);
+
+    transition:.3s;
+}
+
+.nav-links a:hover{
+
+    color:var(--primary);
+}
+
+#themeToggle{
+
+    width:45px;
+    height:45px;
+
+    border:none;
+    border-radius:50%;
+
+    cursor:pointer;
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+
+    font-size:1rem;
+}
+
+/* ==========================
+   HERO
+========================== */
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+    radial-gradient(circle at top left,
+    rgba(0,212,255,.15),
+    transparent 40%),
+
+    radial-gradient(circle at bottom right,
+    rgba(60,255,143,.15),
+    transparent 40%),
+
+    var(--bg);
+}
+
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:
+
+    linear-gradient(
+        rgba(255,255,255,.03) 1px,
+        transparent 1px
+    ),
+
+    linear-gradient(
+        90deg,
+        rgba(255,255,255,.03) 1px,
+        transparent 1px
+    );
+
+    background-size:40px 40px;
+
+    opacity:.4;
+}
+
+.hero-content{
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+    align-items:center;
+}
+
+.badge{
+
+    display:inline-block;
+
+    padding:10px 18px;
+
+    border-radius:50px;
+
+    background:rgba(0,212,255,.15);
+
+    border:1px solid rgba(0,212,255,.3);
+
+    color:var(--primary);
+
+    margin-bottom:20px;
+}
+
+.hero h1{
+
+    font-size:4rem;
+    line-height:1.1;
+
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+
+    color:var(--secondary);
+
+    text-shadow:
+    0 0 10px var(--secondary),
+    0 0 30px var(--secondary);
+}
+
+.hero p{
+
+    font-size:1.2rem;
+
+    color:var(--text-light);
+
+    margin-bottom:35px;
+}
+
+.btn-primary{
+
+    display:inline-flex;
+
+    text-decoration:none;
+
+    color:#000;
+
+    font-weight:700;
+
+    padding:16px 34px;
+
+    border-radius:50px;
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--accent),
+        #ffe88b
+    );
+
+    transition:.4s;
+}
+
+.btn-primary:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+    0 15px 35px rgba(255,212,59,.35);
+}
+
+/* ==========================
+   DYNAMO ANIMATION
+========================== */
+
+.dynamo-animation{
+
+    position:relative;
+
+    width:400px;
+    height:400px;
+
+    margin:auto;
+}
+
+.rotor{
+
+    width:220px;
+    height:220px;
+
+    border-radius:50%;
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    border:15px solid var(--primary);
+
+    box-shadow:
+    0 0 30px var(--primary),
+    inset 0 0 30px var(--primary);
+
+    animation:spin 4s linear infinite;
+}
+
+.rotor::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:20px;
+    height:220px;
+
+    background:var(--accent);
+
+    left:50%;
+    top:-15px;
+
+    transform:translateX(-50%);
+}
+
+.energy-line{
+
+    position:absolute;
+
+    width:160px;
+    height:5px;
+
+    background:var(--secondary);
+
+    top:50%;
+    right:0;
+
+    box-shadow:
+    0 0 20px var(--secondary);
+
+    animation:energy 1s infinite;
+}
+
+.line2{
+
+    top:58%;
+}
+
+.led{
+
+    position:absolute;
+
+    width:60px;
+    height:60px;
+
+    right:-20px;
+    top:44%;
+
+    border-radius:50%;
+
+    background:var(--accent);
+
+    box-shadow:
+    0 0 20px var(--accent),
+    0 0 50px var(--accent),
+    0 0 90px var(--accent);
+
+    animation:pulse 1.5s infinite;
+}
+
+/* ==========================
+   SECTION
+========================== */
+
+.section{
+    padding:110px 0;
+}
+
+.section-title{
+
+    text-align:center;
+
+    font-size:2.5rem;
+
+    margin-bottom:60px;
+
+    position:relative;
+}
+
+.section-title::after{
+
+    content:"";
+
+    width:100px;
+    height:4px;
+
+    background:
+    linear-gradient(
+        90deg,
+        var(--primary),
+        var(--secondary)
+    );
+
+    position:absolute;
+
+    left:50%;
+    bottom:-15px;
+
+    transform:translateX(-50%);
+}
+
+/* ==========================
+   CARDS
+========================== */
+
+.card,
+.material-card,
+.concept-card,
+.application-card,
+.info-card,
+.conclusion-card{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:22px;
+
+    box-shadow:var(--shadow);
+
+    transition:.4s;
+}
+
+.card:hover,
+.material-card:hover,
+.concept-card:hover,
+.application-card:hover{
+
+    transform:translateY(-10px);
+
+    border-color:rgba(0,212,255,.4);
+}
+
+.card{
+
+    padding:35px;
+    text-align:center;
+}
+
+.card span{
+
+    font-size:2.5rem;
+}
+
+.card h3{
+    margin:20px 0 10px;
+}
+
+.card p{
+    color:var(--text-light);
+}
+
+.info-card{
+
+    padding:45px;
+
+    display:flex;
+    gap:30px;
+    align-items:center;
+}
+
+.icon-large{
+
+    font-size:4rem;
+
+    color:var(--accent);
+}
+
+.material-card{
+
+    padding:30px;
+    text-align:center;
+}
+
+.material-card span{
+
+    font-size:3rem;
+    display:block;
+    margin-bottom:15px;
+}
+
+.concept-card{
+
+    padding:25px;
+    text-align:center;
+}
+
+.concept-card span{
+
+    font-size:2.2rem;
+}
+
+.application-card{
+
+    overflow:hidden;
+}
+
+.app-img{
+
+    height:170px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:5rem;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(0,212,255,.15),
+        rgba(60,255,143,.15)
+    );
+}
+
+.application-card h3{
+
+    text-align:center;
+    padding:20px;
+}
+
+/* ==========================
+   GRIDS
+========================== */
+
+.grid-4{
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+}
+
+.grid-5{
+
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:20px;
+}
+
+.grid-6{
+
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:20
+}
+
+/* ==========================
+   TIMELINE
+========================== */
+
+.timeline{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+
+    gap:15px;
+
+    margin-bottom:60px;
+}
+
+.step{
+
+    width:170px;
+
+    padding:25px;
+
+    border-radius:18px;
+
+    background:var(--card);
+
+    text-align:center;
+
+    border:1px solid var(--border);
+}
+
+.number{
+
+    width:50px;
+    height:50px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin:auto auto 15px;
+
+    font-weight:bold;
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+}
+
+.arrow{
+    font-size:2rem;
+    color:var(--accent);
+}
+
+.energy-flow{
+
+    display:flex;
+    justify-content:center;
+    gap:15px;
+
+    flex-wrap:wrap;
+
+    font-weight:700;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(0,212,255,.15),
+        rgba(60,255,143,.15)
+    );
+}
+
+/* ==========================
+   RESULTS
+========================== */
+
+.results-grid{
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+}
+
+.results-text ul{
+
+    list-style:none;
+}
+
+.results-text li{
+
+    margin-bottom:18px;
+    font-size:1.1rem;
+}
+
+.meter{
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.meter-circle{
+
+    width:260px;
+    height:260px;
+
+    border-radius:50%;
+
+    background:
+    conic-gradient(
+        var(--secondary),
+        var(--accent),
+        var(--primary),
+        var(--secondary)
+    );
+
+    padding:18px;
+
+    animation:spinSlow 12s linear infinite;
+}
+
+.meter-value{
+
+    width:100%;
+    height:100%;
+
+    background:var(--bg);
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:3rem;
+    font-weight:bold;
+}
+
+/* ==========================
+   FOOTER
+========================== */
+
+.footer{
+
+    background:var(--bg2);
+
+    border-top:1px solid var(--border);
+
+    padding:60px 0 20px;
+}
+
+.footer-grid{
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:30px;
+}
+
+.footer h3{
+
+    color:var(--secondary);
+    margin-bottom:10px;
+}
+
+.copyright{
+
+    text-align:center;
+
+    margin-top:40px;
+
+    color:var(--text-light);
+}
+
+/* ==========================
+   TOP BUTTON
+========================== */
+
+#topBtn{
+
+    position:fixed;
+
+    bottom:30px;
+    right:30px;
+
+    width:55px;
+    height:55px;
+
+    border:none;
+    border-radius:50%;
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:1.4rem;
+
+    display:none;
+
+    z-index:999;
+}
+
+/* ==========================
+   REVEAL
+========================== */
+
+.reveal{
+
+    opacity:0;
+
+    transform:translateY(40px);
+
+    transition:1s;
+}
+
+.reveal.active{
+
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+/* ==========================
+   ANIMAÇÕES
+========================== */
+
+@keyframes spin{
+
+    from{
+        transform:translate(-50%,-50%) rotate(0deg);
+    }
+
+    to{
+        transform:translate(-50%,-50%) rotate(360deg);
+    }
+}
+
+@keyframes spinSlow{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+@keyframes pulse{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.08);
+    }
+}
+
+@keyframes energy{
+
+    0%{
+        opacity:.3;
+        width:100px;
+    }
+
+    50%{
+        opacity:1;
+        width:180px;
+    }
+
+    100%{
+        opacity:.3;
+        width:100px;
+    }
+}
+
+/* ==========================
+   RESPONSIVO
+========================== */
+
+@media(max-width:1100px){
+
+    .hero-content,
+    .results-grid{
+
+        grid-template-columns:1fr;
+    }
+
+    .grid-6{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .grid-5{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .grid-4{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .footer-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .hero{
+        text-align:center;
+    }
+}
+
+@media(max-width:768px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero h1{
+        font-size:2.8rem;
+    }
+
+    .dynamo-animation{
+        width:280px;
+        height:280px;
+    }
+
+    .rotor{
+        width:150px;
+        height:150px;
+    }
+
+    .grid-6,
+    .grid-5,
+    .grid-4{
+
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .info-card{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .timeline{
+        flex-direction:column;
+    }
+
+    .arrow{
+        transform:rotate(90deg);
+    }
+
+    .section{
+        padding:80px 0;
+    }
+}
+/* ==========================
+   TELAS MUITO GRANDES (4K)
+========================== */
+
+@media (min-width: 1800px){
+
+    .container{
+        max-width: 1600px;
+    }
+
+    .hero h1{
+        font-size: 5.5rem;
+    }
+
+    .section-title{
+        font-size: 3.5rem;
+    }
+}
+
+/* ==========================
+   NOTEBOOKS PEQUENOS
+========================== */
+
+@media (max-width: 1200px){
+
+    .hero-content{
+        gap:40px;
+    }
+
+    .nav-links{
+        gap:15px;
+    }
+
+    .nav-links a{
+        font-size:.95rem;
+    }
+}
+
+/* ==========================
+   TABLETS HORIZONTAIS
+========================== */
+
+@media (max-width: 1024px){
+
+    .hero-content,
+    .results-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        text-align:center;
+    }
+
+    .grid-6{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .grid-5{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .grid-4{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+/* ==========================
+   TABLETS RETRATO
+========================== */
+
+@media (max-width: 820px){
+
+    .hero h1{
+        font-size:3rem;
+    }
+
+    .section-title{
+        font-size:2rem;
+    }
+
+    .navbar{
+        height:70px;
+    }
+}
+
+/* ==========================
+   CELULARES GRANDES
+========================== */
+
+@media (max-width: 768px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero{
+        padding-top:100px;
+    }
+
+    .hero h1{
+        font-size:2.6rem;
+    }
+
+    .hero p{
+        font-size:1rem;
+    }
+
+    .grid-6,
+    .grid-5,
+    .grid-4{
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .info-card{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .timeline{
+        flex-direction:column;
+    }
+
+    .arrow{
+        transform:rotate(90deg);
+    }
+
+    .dynamo-animation{
+        width:260px;
+        height:260px;
+    }
+
+    .rotor{
+        width:140px;
+        height:140px;
+    }
+}
+
+/* ==========================
+   iPHONE 14 / GALAXY
+========================== */
+
+@media (max-width: 480px){
+
+    .container{
+        width:92%;
+    }
+
+    .hero h1{
+        font-size:2rem;
+    }
+
+    .badge{
+        font-size:.8rem;
+    }
+
+    .btn-primary{
+        width:100%;
+        justify-content:center;
+    }
+
+    .section-title{
+        font-size:1.7rem;
+    }
+
+    .card,
+    .material-card,
+    .concept-card,
+    .application-card{
+        padding:20px;
+    }
+
+    .meter-circle{
+        width:200px;
+        height:200px;
+    }
+
+    .meter-value{
+        font-size:2rem;
+    }
+
+    #topBtn{
+        width:50px;
+        height:50px;
+        right:15px;
+        bottom:15px;
+    }
+}
+
+/* ==========================
+   CELULARES PEQUENOS
+========================== */
+
+@media (max-width: 375px){
+
+    .hero h1{
+        font-size:1.8rem;
+    }
+
+    .hero p{
+        font-size:.95rem;
+    }
+
+    .section-title{
+        font-size:1.5rem;
+    }
+
+    .logo h2{
+        font-size:1rem;
+    }
+
+    .logo span{
+        display:none;
+    }
+
+    .step{
+        width:100%;
+    }
+}
+
+/* ==========================
+   iPHONE SE / MUITO PEQUENOS
+========================== */
+
+@media (max-width: 320px){
+
+    .hero h1{
+        font-size:1.6rem;
+    }
+
+    .btn-primary{
+        padding:14px;
+        font-size:.9rem;
+    }
+
+    .section{
+        padding:60px 0;
+    }
+}
+/* ==========================
+   TELAS MUITO GRANDES (4K)
+========================== */
+
+@media (min-width: 1800px){
+
+    .container{
+        max-width: 1600px;
+    }
+
+    .hero h1{
+        font-size: 5.5rem;
+    }
+
+    .section-title{
+        font-size: 3.5rem;
+    }
+}
+
+/* ==========================
+   NOTEBOOKS PEQUENOS
+========================== */
+
+@media (max-width: 1200px){
+
+    .hero-content{
+        gap:40px;
+    }
+
+    .nav-links{
+        gap:15px;
+    }
+
+    .nav-links a{
+        font-size:.95rem;
+    }
+}
+
+/* ==========================
+   TABLETS HORIZONTAIS
+========================== */
+
+@media (max-width: 1024px){
+
+    .hero-content,
+    .results-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        text-align:center;
+    }
+
+    .grid-6{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .grid-5{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .grid-4{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+/* ==========================
+   TABLETS RETRATO
+========================== */
+
+@media (max-width: 820px){
+
+    .hero h1{
+        font-size:3rem;
+    }
+
+    .section-title{
+        font-size:2rem;
+    }
+
+    .navbar{
+        height:70px;
+    }
+}
+
+/* ==========================
+   CELULARES GRANDES
+========================== */
+
+@media (max-width: 768px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero{
+        padding-top:100px;
+    }
+
+    .hero h1{
+        font-size:2.6rem;
+    }
+
+    .hero p{
+        font-size:1rem;
+    }
+
+    .grid-6,
+    .grid-5,
+    .grid-4{
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .info-card{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .timeline{
+        flex-direction:column;
+    }
+
+    .arrow{
+        transform:rotate(90deg);
+    }
+
+    .dynamo-animation{
+        width:260px;
+        height:260px;
+    }
+
+    .rotor{
+        width:140px;
+        height:140px;
+    }
+}
+
+/* ==========================
+   iPHONE 14 / GALAXY
+========================== */
+
+@media (max-width: 480px){
+
+    .container{
+        width:92%;
+    }
+
+    .hero h1{
+        font-size:2rem;
+    }
+
+    .badge{
+        font-size:.8rem;
+    }
+
+    .btn-primary{
+        width:100%;
+        justify-content:center;
+    }
+
+    .section-title{
+        font-size:1.7rem;
+    }
+
+    .card,
+    .material-card,
+    .concept-card,
+    .application-card{
+        padding:20px;
+    }
+
+    .meter-circle{
+        width:200px;
+        height:200px;
+    }
+
+    .meter-value{
+        font-size:2rem;
+    }
+
+    #topBtn{
+        width:50px;
+        height:50px;
+        right:15px;
+        bottom:15px;
+    }
+}
+
+/* ==========================
+   CELULARES PEQUENOS
+========================== */
+
+@media (max-width: 375px){
+
+    .hero h1{
+        font-size:1.8rem;
+    }
+
+    .hero p{
+        font-size:.95rem;
+    }
+
+    .section-title{
+        font-size:1.5rem;
+    }
+
+    .logo h2{
+        font-size:1rem;
+    }
+
+    .logo span{
+        display:none;
+    }
+
+    .step{
+        width:100%;
+    }
+}
+
+/* ==========================
+   iPHONE SE / MUITO PEQUENOS
+========================== */
+
+@media (max-width: 320px){
+
+    .hero h1{
+        font-size:1.6rem;
+    }
+
+    .btn-primary{
+        padding:14px;
+        font-size:.9rem;
+    }
+
+    .section{
+        padding:60px 0;
+    }
+}
